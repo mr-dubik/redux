@@ -44,10 +44,27 @@ export default function todoReducer(state = initialState, action) {
       };
     }
 
+    // case REMOVE_TODO: {
+    //   const { id } = action.payload;
+    //   state.allIds = state.allIds.filter((task) => task.id !== id - 1);
+    //   delete state.byIds[id];
+    //   state.byIds = state.byIds.filter((task) => task.id !== id);
+
+    //   delete state.allIds[id - 1];
+
+    //   console.log(state);
+    //   state.allIds.filter((task) => task.id !== id);
+
+    //   return {
+    //     ...state,
+    //   };
+    // }
+
     case REMOVE_TODO: {
+      const { id } = action.payload;
       return {
         ...state,
-        // тут будет удаление.
+        allIds: state.allIds.filter((task) => task.id !== id),
       };
     }
 
