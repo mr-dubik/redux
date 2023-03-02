@@ -1,4 +1,9 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from "../actions/types/todo";
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  REMOVE_TODO,
+  FILTER_TODO,
+} from "../actions/types/todo";
 
 const initialState = {
   allIds: [],
@@ -54,6 +59,20 @@ export default function todoReducer(state = initialState, action) {
           [id]: null,
         },
         allIds: state.allIds.filter((current) => current !== id),
+      };
+    }
+
+    case FILTER_TODO: {
+      const { id } = action.payload;
+
+      return {
+        ...state,
+        byIds: {
+          ...state.byIds,
+          [id]: {
+            complete: true,
+          },
+        },
       };
     }
 
