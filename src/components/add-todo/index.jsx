@@ -18,8 +18,8 @@ export const AddTodo = () => {
     setValue("");
   };
 
-  const handleFilterTodo = () => {
-    dispatch(filterTodo());
+  const handleFilterTodo = (complete) => {
+    dispatch(filterTodo(complete));
   };
 
   return (
@@ -28,7 +28,7 @@ export const AddTodo = () => {
       <button className={styles.addButton} onClick={handleAddTodo}>
         Add todo
       </button>
-      <button className={styles.addButton} onClick={handleFilterTodo}>
+      <button className={styles.addButton} onClick={handleFilterTodo(true)}>
         Complited
       </button>
     </div>
